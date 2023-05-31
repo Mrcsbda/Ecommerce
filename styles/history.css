@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+    --orange: #f2a00e;
+    --main-blue: #0da487;
+    --main-gray: #c6c6c6;
+    --dark-gray: #79777d;
+    --inter: "Inter", sans-serif;
+}
+
+* {
+    font-family: var(--inter);
+}
+
+#history {
+    color: var(--main-blue);
+    font-weight: 700;
+}
+
+.main {
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.historyPurcahseContainer {
+    width: 21rem;
+    border: 1px solid var(--main-gray);
+    border-radius: 5px;
+    padding: 2rem 1.5rem;
+}
+
+.historyPurcahseContainer hr{
+    border: 1px solid var(--main-gray);
+    border-bottom: none;
+    margin-bottom: 1rem;
+}
+
+.article__imageProductContainer {
+    margin-bottom: 1rem;
+}
+
+.article__imageProductContainer img {
+    width: 100%;
+}
+
+.article__information {
+    margin-bottom: 1rem;
+}
+
+.article__information h2{
+    color: var(--main-blue);
+    margin-bottom: 0.5rem;
+}
+
+.article__information p{
+    font-weight: 600;
+}
+
+.article__cateogryProduct {
+    color: var(--dark-gray);
+}
+
+@media screen and (max-width:360px) {
+    .historyPurcahseContainer {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .main {
+        width: 80vw;
+        padding: 2rem 2rem;
+    }
+
+    .historyPurcahseContainer {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .historyPurcahseContainer hr{
+       display: none;
+    }
+
+    .article__imageProductContainer {
+        margin-bottom: 0;
+    }
+    
+    .article__imageProductContainer img {
+        width: 10rem;
+    }
+
+    .article__information {
+        margin-bottom: 0rem;
+        width: 13rem;
+        text-align: center;
+    }
+    
+    .article__information h2{
+        color: var(--main-blue);
+        margin-bottom: 1rem;
+    }
+    
+    .article__information p{
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .article__cateogryProduct {
+        color: var(--dark-gray);
+    }
+}

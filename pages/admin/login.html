@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/loginAdmin.css">
+    <link rel="shortcut icon" href="../../images/icons/faviconAdmin.svg" type="image/x-icon">
+    <title>Login.</title>
+</head>
+
+<body>
+    <main class="main">
+        <a class="main__returnHomeLink" href="../../index.html">
+            <img class="main__returnHomeIcon" src="../../images/icons/arrowReturnHome.svg" alt="">
+            <p>Volver a la tienda</p>
+        </a>
+        <article class="main__loginContainer">
+            <img src="../../images/Images/Logo.svg" alt="Logo PetShop">
+            <p>Ingrese usuario y contraseña para ingresar.</p>
+            <hr>
+            <form id="formLogin">
+                <input class="form__user" type="text" placeholder="Usuario">
+                <input class="form__password" type="text" placeholder="Contraseña">
+                <button type="submit">Ingresar</button>
+            </form>
+          
+        </article>
+        <article class="main__incorrectInfo">
+            <section>
+                <div>
+                    <p>Usuario y/o contraseña incorrectos. Intente de nuevo por favor.</p>
+                   <button id="btnTryAgain">volver a intentar</button>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="../../scripts/validationLogin.js"></script>
+</body>
+</html>

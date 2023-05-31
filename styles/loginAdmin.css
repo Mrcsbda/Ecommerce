@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root {
+    --main-blue: #0da487;
+    --dark-gray: #79777d;
+    --quicksand: 'Quicksand', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.body--active {
+    position: fixed;
+}
+
+.main {
+    padding: 1rem;
+    display: flex;
+    width: 100vw;
+    max-height: 100%;
+    min-height: 100vh;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-blue);
+}
+
+.main__returnHomeLink {
+    top: 2rem;
+    left: 2rem;
+    gap: 0.5rem;
+    display: flex;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: absolute;
+    align-items: center;
+    text-decoration: none;
+    font-family: var(--quicksand);
+}
+
+.main__returnHomeIcon {
+    width: 2rem;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(176deg) brightness(105%) contrast(107%);
+
+}
+
+.main__loginContainer {
+    width: 19rem;
+    display: flex;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+
+.main__loginContainer img {
+    width: 13rem;
+    margin-bottom: 2rem;
+}
+
+.main__loginContainer p {
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: var(--quicksand);
+}
+
+.main__loginContainer hr {
+    width: 90%;
+    margin-bottom: 1rem;
+    border: 1px solid var(--main-blue);
+    border-bottom: none;
+}
+
+.main__loginContainer form {
+    width: 100%;
+    gap: 0.5rem;
+    display: flex;
+    padding-top: 1rem;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main__loginContainer form input {
+    width: 100%;
+    outline: none;
+    padding: 0.7rem 1rem;
+    border-radius: 0.3rem;
+    font-family: var(--quicksand);
+    border: 1px solid var(--dark-gray);
+}
+
+.main__loginContainer form input:focus {
+    border: 1px solid var(--main-blue);
+}
+
+.main__loginContainer form button {
+    width: 50%;
+    border: none;
+    text-align: center;
+    margin-top: 0.5rem;
+    border-radius: 0.2rem;
+    background-color: var(--main-blue);
+    padding: 1rem;
+    color: white;
+    font-family: var(--quicksand);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.main__incorrectInfo {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+    display: none;
+}
+
+.main__incorrectInfo--active {
+    display: flex;
+}
+
+.main__incorrectInfo div{
+    background-color: white;
+    font-family: var(--quicksand);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.main__incorrectInfo div p{
+    font-weight: 700;
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.main__incorrectInfo div button{
+    padding: 0.7rem 1rem;
+    color: white;
+    background-color: var(--main-blue);
+    border: none;
+    font-size: 1.1rem;
+    align-self: center;
+    border-radius: 5px;
+    font-family: var(--quicksand);
+    font-weight: 700;
+    cursor: pointer;
+}

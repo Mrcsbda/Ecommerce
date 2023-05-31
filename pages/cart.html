@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito.</title>
+    <link rel="shortcut icon" href="../images/icons/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/cart.css">
+</head>
+
+<body>
+    <header class="header">
+
+        <!--? Contenedor anuncio incial de la página)-->
+        <article class="header__advertisementContainer">
+            <p class="header__advertisementText">
+                Algo que tu amas está ahora en descuento.
+                <span>¡Compralo ya!</span>
+            </p>
+            <section class="header__language">
+                <div>
+                    <figure class="header__languageIconContainer">
+                        <img src="../images/icons/spanish.svg" alt="Language icon" />
+                    </figure>
+                    <p>Spanish</p>
+                    <figure class="header__arrowDownIconContainer">
+                        <img src="../images/icons/arrowDown.svg" alt="Arrow down icon" />
+                    </figure>
+                </div>
+                <div>
+                    <p>COP</p>
+                    <figure class="header__arrowDownIconContainer">
+                        <img src="../images/icons/arrowDown.svg" alt="Arrow down icon" />
+                    </figure>
+                </div>
+            </section>
+        </article>
+
+        <!--? Contenedor del logo, buscador y iconos de navegación (favorites, cart and user)-->
+        <article class="header__navigationContainer">
+            <a href="../index.html" class="header__logoContainer">
+                <img src="../images/Images/Logo.svg" alt="Image Logo" />
+            </a>
+
+            <section class="header__navegation">
+
+                <figure class="header__menuMobileContainer">
+                    <img id="btnOpenMenu" src="../images/icons/menu-mobile.svg" alt="menu mobile icon" />
+                </figure>
+
+                <div class="header__searcherAndLocation">
+                    <figure class="header__locationIconContainer">
+                        <img src="../images/icons/location.svg" alt="icon location" />
+                    </figure>
+                    <div class="header__searcherContainer">
+                        <input type="text" placeholder="Buscar producto" />
+                        <button class="header_buttonSearch">
+                            <img src="../images/icons/search.svg" alt="icon search" />
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="header__navegationIconsContainer">
+                <figure class="header__phone">
+                    <img class="header__navigationIcons" src="../images/icons/phone.svg" alt="icon phone" />
+                </figure>
+                <div class="header__lineIcons"></div>
+
+                <a href="./favorites.html">
+                    <img class="header__navigationIcons" src="../images/icons/favorite.svg" alt="icon favorite" />
+                </a>
+
+                <div class="header__lineIcons"></div>
+
+                <!--? Contenedor de los productos añadidos al carrito y su icono-->
+                <div class="header__productsCartContainer header__cart">
+                    <a href="./cart.html">
+                        <img class="header__navigationIcons " src="../images/icons/cart.svg" alt="icon cart" />
+                        <!--? Contenedor del contador del carrito-->
+                        <div class="header__cartCounter">2</div>
+                    </a>
+
+                    <!--? Contenedor de cada producto del carrito-->
+                    <div class="header__productsCart">
+
+                        <div id="productsCartContainer">
+
+                            <div class="header__product">
+                                <img class="header__deleteProductIcon" src="../images/icons/deleteProduct.svg"
+                                    alt="delete product icon">
+                                <img class="header__imageProduct"
+                                    src="https://tse2.mm.bing.net/th?id=OIP.CNHbuKnIQWuSFPDmXM8V4gHaHa&pid=Api" alt="">
+                                <div>
+                                    <p class="header__nameProduct">Colchoneta Para Perro Termica SofistiPets Azul Oscuro
+                                        - Grande
+                                        (15x85x75)</p>
+                                    <p class="header__amountProduct"><span>1 x </span>$138.450</p>
+                                </div>
+                            </div>
+
+                            <div class="header__product">
+                                <img class="header__deleteProductIcon" src="../images/icons/deleteProduct.svg"
+                                    alt="delete product icon">
+                                <img class="header__imageProduct"
+                                    src="https://tse2.mm.bing.net/th?id=OIP.VL0JaYdhp8_hBmdQZ3iuBAHaHa&pid=Api" alt="">
+                                <div>
+                                    <p class="header__nameProduct">Cama Para Perro Afp Pups Bed Turquoise - 36 x 49 x
+                                        13.5 Cm</p>
+                                    <p class="header__amountProduct"><span>1 x </span>$141.650</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="header__totalCartContainer">
+                            <p>Total:</p>
+                            <p class="header__totalToPay">$280.100</p>
+                        </div>
+                        <div class="header__buttonsCartContainer">
+                            <p class="header__viewCart">Mirar Carrito</p>
+                            <p class="header__checkout">Comprar</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="header__lineIcons"></div>
+
+                <a href="./admin/login.html">
+                    <img class="header__navigationIcons" src="../images/icons/user.svg" alt="icon user" />
+                </a>
+
+            </section>
+        </article>
+
+        <!--? Contenedor de los menus (mobile and desktop))-->
+        <article class="header__navContainer">
+            <a href="" class="header__categoriesBtn">
+                <img src="../images/icons/menu-AllCategories.svg" alt="icon menu all categories" />
+                <span>Todas las categorias</span>
+            </a>
+
+            <nav class="header__navMobile">
+                <ul class="header__navMobileList">
+                    <img id="btnCloseMenu" class="header__navMobileIconClose" src="../images/icons/arrowCloseMenu.svg"
+                        alt="icon close" />
+                    <li>
+                        <a href="../index.html">Inicio</a>
+                    </li>
+                    <li>
+                        Tienda
+                    </li>
+                    <li>
+                        Productos
+                    </li>
+                    <li>
+                        Mega Menu
+                    </li>
+                    <li>
+                        Blog
+                    </li>
+                    <li>
+                        Paginas
+                    </li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+
+            <nav class="header__navDesktop">
+                <ul class="header__navDesktopList">
+                    <li>
+                        <a href="../index.html">Inicio</a>
+                        <img src="../images/icons/arrowDown.svg" alt="icon arrow down" />
+                    </li>
+                    <li>
+                        Tienda
+                        <img src="../images/icons/arrowDown.svg" alt="icon arrow down" />
+                    </li>
+                    <li>
+                        Productos
+                        <img src="../images/icons/arrowDown.svg" alt="icon arrow down" />
+                    </li>
+                    <li>
+                        Mega Menu
+                        <img src="../images/icons/arrowDown.svg" alt="icon arrow down" />
+                    </li>
+                    <li>
+                        Blog
+                        <img src="../images/icons/arrowDown.svg" alt="icon arrow down" />
+                    </li>
+                    <li>
+                        Paginas
+                        <img src="../images/icons/arrowDown.svg" alt="icon arrow down" />
+                    </li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+        </article>
+
+    </header>
+
+    <main class="main">
+
+        <article class="main__titlePageContainer">
+            <h1>Carrito</h1>
+            <section>
+                <a href="../index.html"><img src="../images/icons/homeIcon.svg" alt="home icon"></a>
+                <img src="../images/icons/homeArrowIcon.svg" alt="home arrow icon">
+                <p>Carrito</p>
+            </section>
+        </article>
+
+        <article class="main__productsToPayContainer">
+
+            <section class="main__productToPay">
+                <div class="product__informationContainer">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.CNHbuKnIQWuSFPDmXM8V4gHaHa&pid=Ap" alt="">
+                    <p>Colchoneta Para Perro Termica SofistiPets Azul Oscuro - Grande
+                        (15x85x75)</p>
+                </div>
+                <div class="main__productPriceContainer">
+                    <p class="main__productPrice">Precio</p>
+                    <p class="main__productPricesContainer">
+                        <span class="main__priceWithDiscount">$138.450</span>
+                        <span class="main__normalPrice">$150.700</span>
+                    </p>
+                    <p class="main__productSave">Ahorraste: $12.250</p>
+                </div>
+                <div class="main__productButtonAmountContainer">
+                    <p class="main__productButtonTitle">Cantidad</p>
+                    <div class="main__productButtonAmount">
+                        <button>-</button>
+                        <p>0</p>
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="main_productTotalContainer">
+                    <p class="main__productTotal">Total</p>
+                    <p>$138.450</p>
+                </div>
+                <div class="main__productActionContainer">
+                    <p class="main__productActionTitle">Acción</p>
+                    <p class="main__producsActions">
+                        <span class="main__productActionSave">Guardar</span>
+                        <span class="main__productActionDelete">Borrar</span>
+                    </p>
+                </div>
+            </section>
+
+            <section class="main__productToPay">
+                <div class="product__informationContainer">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.VL0JaYdhp8_hBmdQZ3iuBAHaHa&pid=Api" alt="">
+                    <p>Cama Para Perro Afp Pups Bed Turquoise - 36 x 49 x 13.5 Cm</p>
+                </div>
+                <div class="main__productPriceContainer">
+                    <p class="main__productPrice">Precio</p>
+                    <p class="main__productPricesContainer">
+                        <span class="main__priceWithDiscount">$141.650</span>
+                        <span class="main__normalPrice">$165.950</span>
+                    </p>
+                    <p class="main__productSave">Ahorraste: $24.300</p>
+                </div>
+                <div class="main__productButtonAmountContainer">
+                    <p class="main__productButtonTitle">Cantidad</p>
+                    <div class="main__productButtonAmount">
+                        <button>-</button>
+                        <p>0</p>
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="main_productTotalContainer">
+                    <p class="main__productTotal">Total</p>
+                    <p>$141.650</p>
+                </div>
+                <div class="main__productActionContainer">
+                    <p class="main__productActionTitle">Acción</p>
+                    <p class="main__producsActions">
+                        <span class="main__productActionSave">Guardar</span>
+                        <span class="main__productActionDelete">Borrar</span>
+                    </p>
+                </div>
+            </section>
+
+            <section class="main__productToPay">
+                <div class="product__informationContainer">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.CNHbuKnIQWuSFPDmXM8V4gHaHa&pid=Ap" alt="">
+                    <p>Colchoneta Para Perro Termica SofistiPets Azul Oscuro - Grande
+                        (15x85x75)</p>
+                </div>
+                <div class="main__productPriceContainer">
+                    <p class="main__productPrice">Precio</p>
+                    <p class="main__productPricesContainer">
+                        <span class="main__priceWithDiscount">$138.450</span>
+                        <span class="main__normalPrice">$150.700</span>
+                    </p>
+                    <p class="main__productSave">Ahorraste: $12.250</p>
+                </div>
+                <div class="main__productButtonAmountContainer">
+                    <p class="main__productButtonTitle">Cantidad</p>
+                    <div class="main__productButtonAmount">
+                        <button>-</button>
+                        <p>0</p>
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="main_productTotalContainer">
+                    <p class="main__productTotal">Total</p>
+                    <p>$138.450</p>
+                </div>
+                <div class="main__productActionContainer">
+                    <p class="main__productActionTitle">Acción</p>
+                    <p class="main__producsActions">
+                        <span class="main__productActionSave">Guardar</span>
+                        <span class="main__productActionDelete">Borrar</span>
+                    </p>
+                </div>
+            </section>
+
+        </article>
+
+        <article class="main__formToBuyContainer">
+            <h2>Total carrito</h2>
+            <hr>
+            <form class="main__formCoupon">
+                <label>
+                    <span>Cupón</span>
+                </label>
+                <div>
+                    <input type="text" placeholder="Entra tu código de descuento">
+                    <button>Aplicar</button>
+                </div>
+            </form>
+            <div class="main__productPurchaseInformation">
+                <p>Subtotal</p>
+                <p>$280.100</p>
+            </div>
+            <div class="main__productPurchaseInformation">
+                <p>Cupón de descuento</p>
+                <p>(-) 0.00</p>
+            </div>
+            <div class="main__productPurchaseInformation">
+                <p>Envio</p>
+                <p>8.950</p>
+            </div>
+            <hr>
+            <div class="main__productTotalPurchase">
+                <p class="main__productTotalPurchaseTitle">Total(COP)</p>
+                <p class="main__productTotalPurchaseValue">$289.050</p>
+            </div>
+            <div class="main__productPurchaseButtons">
+                <button>Proceso para pagar</button>
+                <a href="../index.html">
+                    <img src="../images/icons/arrowReturnHome.svg" alt="">
+                    <span>Volver al inicio</span>
+                </a>
+            </div>
+
+            <form class="main__formproductPurchase">
+                <input type="text" placeholder="Nombre">
+                <input type="text" placeholder="Dirección">
+                <input type="text" placeholder="Telefono">
+                <div>
+                    <button class="main__btnCancelPurchase">
+                        Cancelar
+                    </button>
+                    <button class="main__btnBuy">
+                        Comprar
+                    </button>
+                </div>
+            </form>
+
+        </article>
+
+    </main>
+
+    <footer class="footer">
+
+        <article class="footer__container1">
+
+            <section class="footer__informationContainer">
+                <figure class="footer__logoContainer">
+                    <img src="../images/Images/Logo.svg" alt="image logo">
+                </figure>
+                <div class="footer__directionContainar">
+                    <img src="../images/icons/direction.svg" alt="icon direction">
+                    <span>1418 Riverwood Drive, CA 96052, US</span>
+                </div>
+                <div class="footer__mailSupportContainar">
+                    <img src="../images/icons/mail.svg" alt="mail direction">
+                    <span>support@petshop.com</span>
+                </div>
+            </section>
+
+            <hr>
+
+            <!--? Menu del footer-->
+            <section class="footer__menuContainer">
+                <div>
+                    <h3>Categories</h3>
+                    <span>Top</span>
+                    <span>Comida</span>
+                    <span>Snacks</span>
+                    <span>Accesorios</span>
+                    <span>Estetica e Higiene</span>
+                    <span>Medicina</span>
+                    <span>Juguetes</span>
+                    <span>Placas</span>
+                </div>
+                <div>
+                    <h3>Otros links</h3>
+                    <span><a href="../index.html">Inicio</a></span>
+                    <span>Tienda</span>
+                    <span>Snacks</span>
+                    <span>Sobre nosotros</span>
+                    <span>Blog</span>
+                    <span>Contactanos</span>
+                </div>
+                <div>
+                    <h3>Centro de ayuda</h3>
+                    <span><a href="../pages/cart.html">Carrito</a></span>
+                    <span>Tu cuenta</span>
+                    <span><a href="../pages/favorites.html">Lista de favoritos</a></span>
+                    <span><a href="">Buscar</a></span>
+                    <span>FAQ</span>
+                </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="footer__contactInformationContainer">
+                <h3>Contactanos</h3>
+
+                <div class="footer__contactInformation">
+                    <img src="../images/icons/phoneFooter.svg" alt="phone footer icon">
+                    <div>
+                        <span class="subtitle">Linea directa 24/7</span>
+                        <span>+91 888 104 2340</span>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="footer__contactInformation">
+                    <img src="../images/icons/mail.svg" alt="mail icon">
+                    <div>
+                        <span class="subtitle">Correo electronico</span>
+                        <span>petshop@hotmail.com</span>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="footer__download">
+                    <span>Descarga nuestra app:</span>
+                    <figure>
+                        <img src="../images/icons/googlePlayBadgeLogo.svg" alt="google play icon">
+                        <img src="../images/icons/app-StoreAppleLogo.svg" alt="app store icon">
+                    </figure>
+                </div>
+            </section>
+
+        </article>
+
+        <hr>
+
+        <article class="footer__container2">
+            <span class="footer__rights">©2022 PetShop todos los derechos reservados</span>
+
+            <section>
+                <figure class="footer__paymentMethodsContainer">
+                    <img src="../images/icons/paypalLogo.svg" alt="paypal icon">
+                    <img src="../images/icons/visaLogo.svg" alt="visa icon">
+                    <img src="../images/icons/masterdCardLogo.svg" alt="masterdCard icon">
+                    <img src="../images/icons/stripeLogo.svg" alt="stripe icon">
+                    <img src="../images/icons/amexLogo.svg" alt="amex icon">
+                </figure>
+            </section>
+
+            <section class="footer__socialNetworksIcons">
+                <span>Mantente conectado:</span>
+                <figure>
+                    <img src="../images/icons/facebookLogo.svg" alt="faceboo icon">
+                    <img src="../images/icons/twitterLogo.svg" alt="twitter icon">
+                    <img src="../images/icons/instagramLogo.svg" alt="instagram icon">
+                    <img src="../images/icons/pinterestLogo.svg" alt="icon">
+                </figure>
+            </section>
+        </article>
+
+    </footer>
+    <script src="../scripts/btnMenuMobile.js"></script>
+</body>
+
+</html>

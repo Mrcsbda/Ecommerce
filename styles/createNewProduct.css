@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+    --red: #e84c4d;
+    --main-blue: #0da487;
+    --main-gray: #c6c6c6;
+    --dark-gray: #79777d;
+    --inter: "Inter", sans-serif;
+}
+
+#createNewProduct {
+    color: var(--main-blue);
+    font-weight: 700;
+}
+
+.main {
+    padding: 2rem 1rem;
+}
+
+.createProduct {
+    width: 21rem;
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--main-gray);
+    border-radius: 5px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form__title {
+    color: var(--main-blue);
+    font-family: var(--inter);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form__group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--inter);
+}
+
+.form__label {
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    padding: 0 0.7rem;
+    left: 10px;
+    font-size: 0.9rem;
+}
+
+.form__input {
+    border: 1px solid var(--main-gray);
+    padding: 0.7rem 1rem;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form__groupTop {
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.form__labelTop {
+    font-size: 0.9rem;
+}
+
+.form__input:focus {
+    border: 1px solid var(--main-blue);
+}
+
+.form__btn {
+    background-color: var(--main-blue);
+    border: none;
+    color: white;
+    width: 70%;
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.correct, .incorrect {
+    font-family: var(--inter);
+    font-weight: 600;
+}
+
+.correct {
+    color: var(--main-blue);
+    display: none;
+}
+
+.incorrect {
+    color: var(--red);
+    display: none;
+}
+
+.incorrect--active {
+    display: inline;
+}
+
+.correct--active {
+    display: inline;
+}
+
+@media screen and (max-width:360px) {
+    .createProduct  {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .main {
+        display: flex;
+        justify-content: center;
+        width: 80vw;
+        align-items: center;
+        position: relative;
+    }
+
+    .main__return {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+    }  
+
+    .form__btn {
+        cursor: pointer;
+    } 
+}
+
+@media screen and (min-width:1540px) {
+    .main__return img{
+        width: 3rem;
+    }
+    
+    .main__return span{
+        font-size: 1.5rem;
+    }
+    
+    .createProduct {
+        width: 35rem;
+        padding: 3rem 2rem;
+        border-radius: 10px;
+        gap: 1.5rem;
+    }
+    
+    .form__title {
+        color: var(--main-blue);
+        font-family: var(--inter);
+        font-size: 1.9rem;
+    }
+    
+    .form__label {
+        top: -11px;
+        padding: 0 0.8rem;
+        left: 12px;
+        font-size: 1.3rem;
+    }
+    
+    .form__input {
+        padding: 1rem;
+    }
+    
+    .form__groupTop {
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    
+    .form__labelTop {
+        font-size: 1.3rem;
+    }
+    
+    .form__inputTop {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+    
+    .form__btn {
+        font-size: 1.2rem;
+    }
+}

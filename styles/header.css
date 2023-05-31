@@ -1,0 +1,585 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --red: #e84c4d;
+  --orange: #f2a00e;
+  --main-blue: #0da487;
+  --main-gray: #c6c6c6;
+  --dark-gray: #79777d;
+  --inter: "Inter", sans-serif;
+  --quicksand: 'Quicksand', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--inter);
+}
+
+.body__navMobile--active {
+  width: 100vw;
+  position: fixed;
+}
+
+.header {
+  padding-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.header__advertisementContainer {
+  display: flex;
+  color: white;
+  padding: 1rem 0;
+  font-size: 0.8rem;
+  flex-direction: column;
+
+  background-color: var(--main-blue);
+}
+
+.header__advertisementText {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.header__language {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__language div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.header__languageIconContainer img {
+  width: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.header__arrowDownIconContainer img {
+  width: 0.8rem;
+  display: flex;
+  align-items: center;
+  filter: invert(96%) sepia(100%) saturate(0%) hue-rotate(238deg) brightness(107%) contrast(104%);
+}
+
+.header__navigationContainer {
+  gap: 0.5rem;
+  display: flex;
+  padding: 1rem 1.2rem;
+  flex-direction: column;
+}
+
+.header__logoContainer {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.header__logoContainer img {
+  width: 8rem;
+  display: flex;
+  align-items: center;
+}
+
+.header__navegation {
+  width: 100%;
+  display: flex;
+  margin-bottom: 1.2rem;
+  justify-content: space-between;
+}
+
+.header__menuMobileContainer {
+  height: 2.2rem;
+}
+
+.header__menuMobileContainer img {
+  width: 2.2rem;
+  filter: invert(53%) sepia(98%) saturate(594%) hue-rotate(1deg)
+    brightness(105%) contrast(90%);
+}
+
+.header__searcherAndLocation {
+  gap: 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.header__locationIconContainer {
+  display: flex;
+  border-radius: 5px;
+  align-items: center;
+  padding: 0rem 0.5rem;
+  justify-content: center;
+  border: 1px solid var(--main-gray);
+}
+
+.header__locationIconContainer img {
+  width: 1rem;
+}
+
+.header__searcherContainer {
+  width: 65vw;
+  display: flex;
+  max-width: 15rem;
+  justify-content: flex-end;
+}
+
+.header__searcherContainer input {
+  width: 90%;
+  outline: none;
+  max-width: 15rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px 0px 0px 5px;
+  border: 1px solid var(--main-gray);
+  border-right: none;
+}
+
+.header__searcherContainer input:focus {
+  border: 1px solid var(--orange);
+}
+
+.header_buttonSearch {
+  padding: 0.2rem 0.5rem;
+  background-color: var(--orange);
+  border: 1px solid var(--orange);
+  border-radius: 0px 5px 5px 0px;
+}
+
+.header_buttonSearch img {
+  width: 1rem;
+}
+
+.header__navegationIconsContainer {
+  width: 100%;
+  gap: 0.5rem;
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-bottom: 0.7rem;
+  justify-content: center;
+}
+
+.header__navegationIconsContainer a {
+  width: 2.5rem;
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.header__navigationIcons {
+  width: 2rem;
+}
+
+.header__phone {
+  height: 2rem;
+  padding: 0 0.3rem;
+}
+
+.header__lineIcons {
+  height: 40px;
+  width: 1px;
+  background-color: var(--main-gray);
+}
+
+.header__productsCartContainer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.header__cartCounter {
+  top: 0;
+  right: 0;
+  display: none;
+  color: white;
+  padding: 2px 5px;
+  font-size: 0.7rem;
+  border-radius: 3px;
+  position: absolute;
+  background-color: #e84c4d;
+}
+
+.header__productsCart {
+  right: 0;
+  top: 115%;
+  width: 20rem;
+  display: none;
+  position: absolute;
+  border-radius: 0.5rem;
+  padding: 1rem 1.2rem;
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.header__productsCart hr {
+  border: 1px solid var(--main-gray);
+  border-bottom: none;
+  margin-bottom: 1rem;
+}
+
+.header__product {
+  gap: 0.2rem;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.header__deleteProductIcon {
+  top: 2px;
+  right: 2px;
+  width: 1.2rem;
+  position: absolute;
+}
+
+.header__imageProduct {
+  width: 6rem;
+}
+
+.header__nameProduct {
+  font-weight: 600;
+  overflow: hidden;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  display: -webkit-box;
+  margin-bottom: 0.2rem;
+  color: var(--main-blue);
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+
+.header__amountProduct span {
+  color: var(--dark-gray);
+}
+
+.header__totalCartContainer, .header__buttonsCartContainer {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__totalToPay {
+  color: var(--main-blue);
+  font-weight: 700;
+}
+
+.header__viewCart, .header__checkout {
+  border: 2px solid var(--main-blue);
+  border-radius: 5px;
+  padding: 0.5rem 0.7rem;
+}
+.header__viewCart {
+  color: var(--main-blue);
+}
+
+.header__checkout {
+  background-color: var(--main-blue);
+  color: white;
+}
+
+.header__navContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.header__categoriesBtn {
+  width: 17rem;
+  gap: 0.5rem;
+  display: flex;
+  color: white;
+  padding: 0.8rem;
+  font-weight: 600;
+  border-radius: 5px;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+  background-color: var(--main-blue);
+}
+
+.header__categoriesBtn img {
+  width: 1.8rem;
+}
+
+.header__navMobile {
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100vw;
+  display: none;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.header__navMobile--active {
+  display: inline;
+}
+
+.header__navMobileList {
+  gap: 1.2rem;
+  width: 13rem;
+  height: 100vh;
+  display: flex;
+  list-style: none;
+  position: relative;
+  border-radius: 5px;
+  flex-direction: column;
+  padding: 3rem 0 0 2.7rem;
+  background-color: white;
+  border: 1px solid var(--main-gray);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.header__navMobileList li a{
+  color: black;
+  text-decoration: none;
+}
+
+.header__navMobileIconClose {
+  width: 2rem;
+  top: 0.8rem;
+  right: 1.2rem;
+  position: absolute;
+}
+
+.header__navMobileList li {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.header__navDesktop {
+  display: none;
+}
+
+.header__infographicsContainer {
+  padding: 1rem 1.2rem;
+}
+
+.header__infographicPetShop img {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.header__infographics {
+  margin-bottom: 1rem;
+}
+
+.header__infographicTagsDescount img {
+  width: 100%;
+}
+
+.header__infographicsContainer div {
+  width: 100%;
+  height: 3px;
+  margin: 5px 0;
+  background-color: var(--red);
+}
+
+.header__infographicsPremiumFood img {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+@media screen and (max-width: 350px) {
+
+  .header__navigationContainer {
+    padding: 1rem;
+  }
+
+  .header__searcherContainer {
+    width: 55vw;
+  }
+
+  .header__searcherContainer input {
+    width: 40vw;
+    padding: 0rem 1rem;
+  }
+
+  .header__categoriesBtn {
+    width: 80%;
+  }
+}
+
+
+
+@media screen and (min-width: 1200px) {
+
+  .header__advertisementContainer {
+    padding: 1rem;
+    font-size: 1rem;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .header__advertisementText {
+    margin: 0;
+  }
+
+  .header__navigationContainer {
+    flex-direction: row;
+    padding: 1.5rem 4rem;
+    justify-content: space-between;
+  }
+
+  .header__logoContainer {
+    margin: 0;
+    width: auto;
+  }
+
+  .header__logoContainer img{
+    width: 12rem;
+  }
+
+  .header__navegation {
+    width: auto;
+    margin: 0;
+  }
+
+  .header__menuMobileContainer {
+    display: none;
+  }
+
+  .header__searcherAndLocation {
+    gap: 0.5rem;
+    width: 40rem;
+    justify-content: center;
+  }
+
+  .header__locationIconContainer {
+    padding: 0.7rem 0.9rem
+  }
+
+  .header__locationIconContainer:hover {
+    cursor: pointer;
+  }
+
+  .header__searcherContainer {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .header__searcherContainer input {
+    min-width: 30rem;
+    max-width: 100%;
+    font-size: 1.1rem;
+    padding: 0.7rem 1.3rem
+  }
+
+  .header_buttonSearch {
+    padding: 0.2rem 1rem
+  }
+
+  .header_buttonSearch:hover {
+   cursor: pointer;
+  }
+
+  .header_buttonSearch img{
+    width: 1.5rem;
+  }
+
+  .header__navegationIconsContainer {
+    width: auto;
+    gap: 1rem;
+    margin: 0;
+  }
+  
+  .header__navegationIconsContainer img:hover {
+    cursor: pointer;
+  } 
+  .header__lineIcons {
+    width: 1px;
+    height: 40px;
+    background-color: var(--main-gray);
+  }
+
+  .header__cart:hover .header__productsCart {
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header__viewCart:hover , .header__checkout:hover {
+    cursor: pointer;
+  }
+
+  .header__navContainer {
+    justify-content: space-between;
+    padding: 0.5rem 4rem;
+    align-items: center;
+  }
+
+  .header__categoriesBtn {
+    margin: 0;
+    width: auto;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.3rem;
+  }
+
+  .header__categoriesBtn img {
+    width: 2.2rem;
+  }
+
+  .header__navDesktop {
+    display: inline;
+  }
+
+  .header__navDesktopList{
+    gap: 1.5rem;
+    display: flex;
+  }
+
+  .header__navDesktopList li {
+    gap: 0.4rem;
+    display: flex;
+    font-size: 1.2rem;
+    align-items: center;
+  }
+
+  .header__navDesktopList li:hover {
+    cursor: pointer;
+  }
+
+  .header__navDesktopList li a {
+    color: black;
+    text-decoration: none;
+  }
+
+  .header__navDesktopList li img {
+    width: 0.7rem;
+  }
+
+  .header__infographicsContainer {
+    padding: 1rem 3rem;
+  }
+
+  .header__infographics {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 0;
+  }
+  .header__infographics div {
+   display: none;
+  }
+
+  .header__infographicTagsDescount {
+    width: 60%;
+  }
+
+  .header__infographicsPremiumFood {
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --red: #e84c4d;
+  --orange: #f2a00e;
+  --main-blue: #0da487;
+  --main-gray: #c6c6c6;
+  --dark-gray: #79777d;
+  --very-light-gray: #f8f8f8;
+  --inter: "Inter", sans-serif;
+}
+
+.footer {
+  padding: 2rem;
+  background-color: var(--very-light-gray);
+}
+
+.footer hr {
+  margin: 1rem 0;
+  border: 1px solid var(--main-gray);
+  border-bottom: none;
+}
+
+.footer__informationContainer {
+  margin-bottom: 1.7rem;
+}
+
+.footer__logoContainer {
+  width: 8rem;
+  margin-bottom: 2rem;
+}
+
+.footer__directionContainar,
+.footer__mailSupportContainar {
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  color: var(--dark-gray);
+}
+
+.footer__directionContainar img,
+.footer__mailSupportContainar img {
+  width: 1.5rem;
+}
+
+.footer__menuContainer {
+  gap: 1rem;
+  display: flex;
+  padding: 1rem 0;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.footer__menuContainer div {
+  gap: 0.3rem;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.footer__menuContainer div h3 {
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.footer__menuContainer div span {
+  color: var(--dark-gray);
+}
+
+.footer__menuContainer div span a {
+  text-decoration: none;
+  color: var(--dark-gray);
+}
+
+.footer__contactInformationContainer {
+  padding: 1rem 0;
+}
+
+.footer__contactInformationContainer hr {
+  width: 80%;
+  margin: 1rem auto;
+  border: 1px dashed var(--dark-gray);
+  border-bottom: none;
+}
+
+.footer__contactInformationContainer h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.footer__contactInformation {
+  gap: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer__contactInformation div {
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__contactInformation div .subtitle {
+  font-size: 1.1rem;
+  color: var(--dark-gray);
+}
+
+.footer__contactInformation img {
+  width: 1.2rem;
+}
+
+.footer__download {
+  padding-top: 0.5rem;
+}
+
+.footer__download span {
+  font-size: 1.2rem;
+  color: var(--dark-gray);
+}
+
+.footer__download figure {
+  gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 0.7rem;
+}
+
+.footer__download figure img {
+  width: 9rem;
+}
+
+.footer__container2 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.footer__rights {
+  text-align: center;
+  color: var(--dark-gray);
+  margin-bottom: 2rem;
+}
+
+.footer__paymentMethodsContainer {
+  gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.footer__paymentMethodsContainer img {
+  width: 4rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--dark-gray);
+}
+
+.footer__socialNetworksIcons {
+  gap: 0.5rem;
+  display: flex;
+  font-size: 1.1rem;
+  color: var(--dark-gray);
+}
+
+.footer__socialNetworksIcons figure {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer__socialNetworksIcons figure img {
+  width: 1.1rem;
+}
+
+@media screen and (min-width: 1200px) {
+
+  .footer {
+    padding: 3rem;
+  }
+
+  .footer hr {
+    margin: 2rem;
+  }
+
+  .footer__container1 {
+    gap: 4rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+
+  .footer__container1 hr {
+    display: none;
+  }
+
+  .footer__menuContainer {
+    display: grid;
+    padding: 0;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .footer__menuContainer span:hover{
+   cursor: pointer;
+  }
+
+  .footer__menuContainer div{
+    gap: 0.8rem;
+  }
+
+  .footer__contactInformationContainer {
+    padding: 0;
+  }
+
+  .footer__contactInformationContainer hr {
+    display: block;
+    margin: 1.5rem auto;
+  }
+
+  .footer__download figure{
+    margin-top: 0.4rem;
+  }
+
+  .footer__download figure img:hover{
+    cursor: pointer;
+  }
+
+  .footer__container2 {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .footer__rights {
+    margin: 0;
+  }
+
+  .footer__paymentMethodsContainer {
+    margin: 0;
+    width: auto;
+  }
+
+  .footer__paymentMethodsContainer img {
+    width: 5rem;
+    padding: 0rem 1rem;
+  }
+
+  .footer__paymentMethodsContainer img:hover {
+    cursor: pointer;
+  }
+
+  .footer__socialNetworksIcons figure{
+    gap: 0.7rem;
+  }
+
+  .footer__socialNetworksIcons figure img{
+    width: 1.4rem;
+  }
+
+  .footer__socialNetworksIcons figure img:hover{
+    cursor: pointer;
+  }
+}
