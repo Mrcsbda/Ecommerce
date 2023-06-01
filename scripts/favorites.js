@@ -21,7 +21,6 @@ const printFavorites = async () => {
     favoritesId = favoritesIdString === null?[]:favoritesIdString.split(',').filter(Boolean)
     favoritesContainer.innerHTML = "";
     const dataFilter = data.filter(item => favoritesId.includes(item.id.toString()))
-    console.log(dataFilter)
     dataFilter.forEach(product => {
         favoritesContainer.innerHTML += `
     <div class="main__product">
@@ -64,7 +63,6 @@ const getBtnsCard = () => {
         });
       });
 }
-
 
 const deleteFavorites = (id) => {
     let favoritesIdString = localStorage.getItem('Favorites');

@@ -12,7 +12,6 @@ let favoritesId = []
 let productsCart = storedProductsCart?storedProductsCart:[];
 
 
-
 const getProducts = async () => {
   try {
     const endpoint = "products";

@@ -222,7 +222,7 @@
 .header__productsCart hr {
   border: 1px solid var(--main-gray);
   border-bottom: none;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .header__product {
@@ -269,10 +269,12 @@
   font-weight: 700;
 }
 
-.header__viewCart, .header__checkout {
+#header__viewCart, #header__checkout {
   border: 2px solid var(--main-blue);
   border-radius: 5px;
   padding: 0.5rem 0.7rem;
+  width: 8rem;
+  text-decoration: none;
 }
 .header__viewCart {
   color: var(--main-blue);
