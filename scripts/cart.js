@@ -87,7 +87,7 @@ const getBtnsCard = () => {
     });
 }
 
-const addQuantityProduct = async (id) => {
+const addQuantityProduct = (id) => {
     const dataFiltered = storedProductsCart.find(item => item.id == id)
     const card = document.querySelector(`.main__productToPay[data-id="${id}"]`);
     const quantityElement = card.querySelector('.main__productQuantity');
@@ -114,7 +114,7 @@ const addQuantityProduct = async (id) => {
     getProductsLocalToCart()
 }
 
-const deleteQuantityProduct = async (id) => {
+const deleteQuantityProduct = (id) => {
     const card = document.querySelector(`.main__productToPay[data-id="${id}"]`);
     const quantityElement = card.querySelector('.main__productQuantity');
     let counter = +quantityElement.textContent;
@@ -152,9 +152,13 @@ const printValueCard = (id) => {
     }
 }
 
-btnCheckout.addEventListener('click', () => {
+const btnChecked = () => {
+    if(!btnCheckout) return
+    btnCheckout.addEventListener('click', () => {
+        console.log('click')
+    })
+    
+}
 
-})
-
-
+btnChecked()
 getProductsLocalToCart()
