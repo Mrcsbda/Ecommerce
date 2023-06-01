@@ -1,4 +1,4 @@
-
+import {getProductsLocalToCart} from './cart.js';
 const cartContainer = document.getElementById('productsCartContainer')
 const totalCart = document.querySelector('.header__totalToPay');
 const cartCounter = document.querySelector('.header__cartCounter'); 
@@ -11,7 +11,6 @@ const getProductsLocal = () => {
     cartContainer.innerHTML = "";
     totalCart.innerHTML = 0;
     cartCounter.classList.remove('header__cartCounter--active')
-    console.log(storedProductsCart)
     if(!storedProductsCart.length) {
         cartContainer.innerHTML = `
         <p class="message">No has agregado nada al carrito</p>
@@ -34,7 +33,6 @@ const getProductsLocal = () => {
         });
         cartCounter.innerHTML = storedProductsCart.length;
     }
-
     getElements()
 }
 
@@ -50,15 +48,15 @@ const getElements = () => {
     })
 }
 
-
 const deleteProduct = (id) => {
+    
     const storedProductsCartString = localStorage.getItem('productsCart');
     const storedProductsCart = JSON.parse(storedProductsCartString);
     const findProduct = storedProductsCart.findIndex(item=> item.id === id)
     storedProductsCart.splice(findProduct,1)
     const productsCartString = JSON.stringify(storedProductsCart)
     localStorage.setItem('productsCart', productsCartString); 
-    
+    getProductsLocalToCart();
     getProductsLocal()
 }
 
