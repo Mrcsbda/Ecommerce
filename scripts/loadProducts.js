@@ -288,6 +288,7 @@ const printValueCard = (id) => {
   }
 }
 
+
 printCards()
 cateogryProducts()
 
