@@ -246,7 +246,9 @@ const sendHistoryJSON = () => {
     form.reset()
     localStorage.removeItem('productsCart')
     getProductsLocalToCart()
-    
+    getProductsLocal()
+    subtotal.innerHTML = `$${0}`;
+    total.innerHTML = `$${0}`;
 }
 
 btnsToPay()
