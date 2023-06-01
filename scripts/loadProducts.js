@@ -1,3 +1,4 @@
+import {getProductsLocal} from './modalCart.js';
 const URL_API = "https://miniback-ecommerce-production.up.railway.app/";
 const containerCards = document.querySelector(".main__products");
 const titlePage = document.querySelector('.main__title');
@@ -142,9 +143,8 @@ const addQuantityProduct = async (id) => {
 
   const productsCartString = JSON.stringify(productsCart)
   localStorage.setItem('productsCart', productsCartString);
+  getProductsLocal()
 }
-
-
 
 const deleteQuantityProduct = async (id) => {
   const card = document.querySelector(`.main__product[data-id="${id}"]`);
@@ -171,6 +171,7 @@ const deleteQuantityProduct = async (id) => {
 
   const productsCartString = JSON.stringify(productsCart)
   localStorage.setItem('productsCart', productsCartString);
+  getProductsLocal()
 }
 
 const cateogryProducts = async () => {

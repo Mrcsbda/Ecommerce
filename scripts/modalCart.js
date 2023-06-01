@@ -30,12 +30,13 @@ const getProductsLocal = () => {
     }
 }
 
+export {getProductsLocal}
 
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 scrollToTop()
-
 getProductsLocal()
+
 
