@@ -11,8 +11,7 @@ const getProductsLocal = () => {
     cartContainer.innerHTML = "";
     totalCart.innerHTML = 0;
     cartCounter.classList.remove('header__cartCounter--active')
-    if(!storedProductsCart) return
-    if(!storedProductsCart.length) {
+    if(!storedProductsCart || !storedProductsCart.length) {
         cartContainer.innerHTML = `
         <p class="message">No has agregado nada al carrito</p>
         `;

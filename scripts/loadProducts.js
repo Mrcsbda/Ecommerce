@@ -25,11 +25,11 @@ const getProducts = async () => {
 
 const printCards = async (productsFiltered = null, titlePageFiltered = 'Productos') => {
   const data = await getProducts()
-
+  const dataFiltered = data.filter(product=> product.stock>0)
   containerCards.innerHTML = "";
   if (areAllCateogories) {
     titlePage.innerHTML = titlePageFiltered;
-    data.forEach((product) => {
+    dataFiltered.forEach((product) => {
       containerCards.innerHTML += `
         <div class="main__product" data-id="${product.id}">
           <img class="main__iconFavorite favoriteActive" data-id="${product.id}" src="./images/icons/favoriteActive.svg"

@@ -22,8 +22,7 @@ const getProductsLocalToCart = async () => {
     const storedProductsCart = JSON.parse(storedProductsCartString);
     if (!cartContainer) return
     cartContainer.innerHTML = "";
-    if(!storedProductsCart) return
-    if (!storedProductsCart.length) {
+    if (!storedProductsCart || !storedProductsCart.length) {
         cartContainer.innerHTML = `
         <p class="message">No has agregado nada al carrito</p>
         `;

@@ -20,7 +20,7 @@ const getElementsAPI = async () => {
                 <h3 class="main__nameProduct">
                   ${product.productName}
                 </h3>
-                <p class="main__amountStock">Stock: ${product.stock}</p>
+                <p class="main__amountStock">${product.stock<=0?"No hay stock":`Stock: ${product.stock}`}</p>
                 <div class="main__priceProduct">
                   <span class="main__price">$${(product.productPrice - product.priceDiscount).toLocaleString()}</span>
                   <span class="main__withoutDiscount">$${(product.productPrice).toLocaleString()}</span>
