@@ -25,6 +25,7 @@ const getProducts = async () => {
 
 const printCards = async (productsFiltered = null, titlePageFiltered = 'Productos') => {
   const data = await getProducts()
+
   containerCards.innerHTML = "";
   if (areAllCateogories) {
     titlePage.innerHTML = titlePageFiltered;
@@ -287,7 +288,6 @@ const printValueCard = (id) => {
     return 0
   }
 }
-
 
 printCards()
 cateogryProducts()
