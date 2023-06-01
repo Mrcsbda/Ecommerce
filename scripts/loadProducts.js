@@ -144,6 +144,8 @@ const addQuantityProduct = async (id) => {
   localStorage.setItem('productsCart', productsCartString);
 }
 
+
+
 const deleteQuantityProduct = async (id) => {
   const card = document.querySelector(`.main__product[data-id="${id}"]`);
   const quantityElement = card.querySelector('.main__productQuantity');

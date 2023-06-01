@@ -219,6 +219,13 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+.message {
+  padding: 1rem;
+  font-weight: 700;
+  font-family: var(--inter);
+  font-size: 1.1rem;
+  text-align: center;
+}
 .header__productsCart hr {
   border: 1px solid var(--main-gray);
   border-bottom: none;
