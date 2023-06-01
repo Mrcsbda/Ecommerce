@@ -207,6 +207,10 @@
   background-color: #e84c4d;
 }
 
+.header__cartCounter--active {
+  display: inline;
+}
+
 .header__productsCart {
   right: 0;
   top: 115%;

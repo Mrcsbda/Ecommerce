@@ -1,5 +1,6 @@
 const cartContainer = document.getElementById('productsCartContainer')
-const totalCart = document.querySelector('.header__totalToPay')
+const totalCart = document.querySelector('.header__totalToPay');
+const cartCounter = document.querySelector('.header__cartCounter');
 let totalToPay = 0;
 
 const getProductsLocal = () => {
@@ -8,6 +9,7 @@ const getProductsLocal = () => {
 
     cartContainer.innerHTML = "";
     totalCart.innerHTML = 0;
+    cartCounter.classList.remove('header__cartCounter--active')
     if(!storedProductsCart) {
         cartContainer.innerHTML = `
         <p class="message">No has agregado nada al carrito</p>
@@ -26,7 +28,10 @@ const getProductsLocal = () => {
             `
             totalToPay += (product.quantity * (product.product.productPrice - product.product.priceDiscount));
             totalCart.innerHTML = `$${totalToPay !== 0?totalToPay.toLocaleString():0}`;
+            cartCounter.classList.add('header__cartCounter--active')
+            
         });
+        cartCounter.innerHTML = storedProductsCart.length;
     }
 }
 
