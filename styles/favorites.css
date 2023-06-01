@@ -45,6 +45,20 @@
   font-weight: 600;
 }
 
+.main__noFavorites {
+  text-align: center;
+  width: 100%;
+  padding: 2rem 0;
+  font-family: var(--inter);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: none;
+}
+
+.main__noFavorites--active {
+  display: block;
+}
+
 .main__products {
   gap: 1rem;
   display: flex;
@@ -69,6 +83,7 @@
   width: 2rem;
   right: 1rem;
   position: absolute;
+  cursor: pointer;
 }
 
 .main__imageProductContainer img {

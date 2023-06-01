@@ -41,11 +41,11 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
             <p class="main__categorieProduct">${product.categoryName}</p>
             <h3 class="main__nameProduct">${product.productName}</h3>
             <div class="main__priceProduct">
-              <span class="main__price">$${product.priceDiscount
-          ? (product.productPrice - product.priceDiscount).toLocaleString('es-ES')
-          : (product.productPrice).toLocaleString('es-ES')
+              <span class="main__price">$${product.priceDiscount !== 0
+          ? (product.productPrice - product.priceDiscount).toLocaleString()
+          : (product.productPrice).toLocaleString()
         }</span>
-              <span class="main__withoutDiscount">$${(product.productPrice).toLocaleString('es-ES')}</span>
+              <span class="main__withoutDiscount">$${(product.productPrice).toLocaleString()}</span>
             </div>
           </div>
           <div class="main__buttonsProductContainer">
@@ -61,9 +61,9 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
     productsFiltered.forEach((product) => {
       containerCards.innerHTML += `
         <div class="main__product" data-id="${product.id}">
-          <img class="main__iconFavorite favoriteActive" src="./images/icons/favoriteActive.svg"
+          <img class="main__iconFavorite favoriteActive" data-id="${product.id}" src="./images/icons/favoriteActive.svg"
             alt="icon favorite active" />
-          <img class="main__iconFavorite favoriteInactive" src="./images/icons/favoriteInactive.svg"
+          <img class="main__iconFavorite favoriteInactive" data-id="${product.id}" src="./images/icons/favoriteInactive.svg"
             alt="icon favorite inactive" />
           <figure class="main__imageProductContainer">
             <img src="${product.productImage}" alt="image product" />
@@ -182,16 +182,15 @@ const addFavorites = (IconsInactive, iconsActive) => {
     const id = iconInactive.getAttribute('data-id');
     iconInactive.addEventListener("click", () => {
       let favoritesIdString = localStorage.getItem('Favorites');
-      favoritesId = favoritesIdString === null?[]:favoritesIdString.split(',').filter(Boolean)
-      console.log(favoritesId)
+      favoritesId = favoritesIdString === null ? [] : favoritesIdString.split(',').filter(Boolean)
       favoritesId.push(id)
       localStorage.setItem('Favorites', favoritesId)
       const idExist = favoritesId.find((item) => item === id);
-      idExist === id?iconInactive.classList.remove('favoriteInactive--active'):iconInactive.classList.add('favoriteInactive--active')
+      idExist === id ? iconInactive.classList.remove('favoriteInactive--active') : iconInactive.classList.add('favoriteInactive--active')
       iconsActive.forEach((iconActive) => {
         const id = iconActive.getAttribute('data-id');
         const idExist = favoritesId.find((item) => item === id);
-        idExist === id?iconActive.classList.add('favoriteActive--active'):iconActive.classList.remove('favoriteActive--active')
+        idExist === id ? iconActive.classList.add('favoriteActive--active') : iconActive.classList.remove('favoriteActive--active')
       });
     });
   });
@@ -202,16 +201,16 @@ const deleteFavorites = (iconsActive, iconsInactive) => {
     const id = iconActive.getAttribute('data-id');
     iconActive.addEventListener("click", () => {
       let favoritesIdString = localStorage.getItem('Favorites');
-      favoritesId = favoritesIdString === null?[]:favoritesIdString.split(',')
-      const findItem = favoritesId.findIndex((item)=> item === id);
-      favoritesId.splice(findItem,1)
+      favoritesId = favoritesIdString === null ? [] : favoritesIdString.split(',')
+      const findItem = favoritesId.findIndex((item) => item === id);
+      favoritesId.splice(findItem, 1)
       localStorage.setItem('Favorites', favoritesId)
       const idExist = favoritesId.find((item) => item === id);
-      !idExist?iconActive.classList.remove('favoriteActive--active'):iconActive.classList.add('favoriteActive--active')
+      !idExist ? iconActive.classList.remove('favoriteActive--active') : iconActive.classList.add('favoriteActive--active')
       iconsInactive.forEach((iconInactive) => {
         const id = iconInactive.getAttribute('data-id');
         const idExist = favoritesId.find((item) => item === id);
-        !idExist?iconInactive.classList.add('favoriteInactive--active'):iconInactive.classList.remove('favoriteInactive--active')
+        !idExist ? iconInactive.classList.add('favoriteInactive--active') : iconInactive.classList.remove('favoriteInactive--active')
       });
     });
   });
@@ -219,16 +218,16 @@ const deleteFavorites = (iconsActive, iconsInactive) => {
 
 const loadedFavorites = (iconsActive, iconsInactive) => {
   let favoritesIdString = localStorage.getItem('Favorites');
-  favoritesId = favoritesIdString === null?[]:favoritesIdString.split(',').filter(Boolean)
+  favoritesId = favoritesIdString === null ? [] : favoritesIdString.split(',').filter(Boolean)
   iconsActive.forEach((iconActive) => {
     const id = iconActive.getAttribute('data-id');
     const idExist = favoritesId.find(item => item === id)
-    idExist === id?iconActive.classList.add('favoriteActive--active'):iconActive.classList.remove('favoriteActive--active')
+    idExist === id ? iconActive.classList.add('favoriteActive--active') : iconActive.classList.remove('favoriteActive--active')
   });
   iconsInactive.forEach((iconInactive) => {
     const id = iconInactive.getAttribute('data-id');
     const idExist = favoritesId.find(item => item === id)
-    !idExist?iconInactive.classList.add('favoriteInactive--active'):iconInactive.classList.remove('favoriteInactive--active')
+    !idExist ? iconInactive.classList.add('favoriteInactive--active') : iconInactive.classList.remove('favoriteInactive--active')
   });
 }
 
