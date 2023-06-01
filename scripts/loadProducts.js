@@ -2,12 +2,15 @@ const URL_API = "https://miniback-ecommerce-production.up.railway.app/";
 const containerCards = document.querySelector(".main__products");
 const titlePage = document.querySelector('.main__title');
 const categoriesNames = document.querySelectorAll(".main__categoriesName");
+const storedProductsCartString = localStorage.getItem('productsCart');
+const storedProductsCart = JSON.parse(storedProductsCartString);
 let favIconActive = "";
 let favIconInactive = "";
 let areAllCateogories = true
 let filteredProduct = [];
 let favoritesId = []
-let productsCart = [];
+let productsCart = storedProductsCart?storedProductsCart:[];
+
 
 
 const getProducts = async () => {
@@ -23,7 +26,6 @@ const getProducts = async () => {
 };
 
 const printCards = async (productsFiltered = null, titlePageFiltered = 'Productos') => {
-
   const data = await getProducts()
   containerCards.innerHTML = "";
   if (areAllCateogories) {
@@ -51,7 +53,7 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
           </div>
           <div class="main__buttonsProductContainer">
             <button class="main__btnMinus" id="btnMinus" data-id="${product.id}">-</button>
-            <span class="main__productQuantity" id="number" data-id="${product.id}" >${0}</span>
+            <span class="main__productQuantity" id="number" data-id="${product.id}">${printValueCard(product.id)}</span>
             <button class="main__btnPlus" id="btnPlus" data-id="${product.id}">+</button>
           </div>
         </div>
@@ -82,7 +84,7 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
           </div>
           <div class="main__buttonsProductContainer">
             <button class="main__btnMinus" id="btnMinus" data-id="${product.id}">-</button>
-            <span class="main__productQuantity" id="number" data-id="${product.id}">${0}</span>
+            <span class="main__productQuantity" id="number" data-id="${product.id}">${printValueCard(product.id)}</span>
             <button class="main__btnPlus" id="btnPlus" data-id="${product.id}">+</button>
           </div>
         </div>
@@ -137,9 +139,10 @@ const addQuantityProduct = async (id) => {
       const findProduct = productsCart.findIndex(item=> item.id === id)
       productsCart[findProduct].quantity = counter;
     }
-
-    console.log(productsCart)
   }
+
+  const productsCartString = JSON.stringify(productsCart)
+  localStorage.setItem('productsCart', productsCartString);
 }
 
 const deleteQuantityProduct = async (id) => {
@@ -163,10 +166,10 @@ const deleteQuantityProduct = async (id) => {
         productsCart.splice(findProduct,1)
       }
     }
-
-
-    console.log(productsCart)
   } 
+
+  const productsCartString = JSON.stringify(productsCart)
+  localStorage.setItem('productsCart', productsCartString);
 }
 
 const cateogryProducts = async () => {
@@ -274,6 +277,15 @@ const loadedFavorites = (iconsActive, iconsInactive) => {
     const idExist = favoritesId.find(item => item === id)
     !idExist ? iconInactive.classList.add('favoriteInactive--active') : iconInactive.classList.remove('favoriteInactive--active')
   });
+}
+
+const printValueCard = (id) => {
+  if(storedProductsCart){
+    const value = storedProductsCart.findIndex(item=> item.id == id) 
+    return value !== -1?storedProductsCart[value].quantity:0
+  } else {
+    return 0
+  }
 }
 
 printCards()
