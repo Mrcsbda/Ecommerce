@@ -7,6 +7,7 @@ const total = document.querySelector('.main__productTotalPurchaseValue')
 const btnCheckout = document.querySelector('.checkout')
 const btnReturnHome = document.querySelector('.returnHome')
 const form = document.querySelector('.main__formproductPurchase')
+const btnCancelPurchase = document.querySelector('.main__btnCancelPurchase')
 let productsCart = storedProductsCart ? storedProductsCart : [];
 let totalToPay = 0;
 
@@ -182,6 +183,9 @@ const btnsToPay = () => {
         form.classList.remove('main__formproductPurchase--active')
     })
     
+    btnCancelPurchase.addEventListener('click', () => {
+        form.classList.remove('main__formproductPurchase--active')
+    })
 }
 
 btnsToPay ()
