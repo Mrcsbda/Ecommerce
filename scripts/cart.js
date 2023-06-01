@@ -5,6 +5,8 @@ const storedProductsCart = JSON.parse(storedProductsCartString);
 const subtotal = document.querySelector('.subtotal')
 const total = document.querySelector('.main__productTotalPurchaseValue')
 const btnCheckout = document.querySelector('.checkout')
+const btnReturnHome = document.querySelector('.returnHome')
+const form = document.querySelector('.main__formproductPurchase')
 let productsCart = storedProductsCart ? storedProductsCart : [];
 let totalToPay = 0;
 
@@ -52,7 +54,7 @@ const getProductsLocalToCart = () => {
                     <p class="main__productActionTitle">Acción</p>
                     <p class="main__producsActions">
                         <span class="main__productActionSave">Guardar</span>
-                        <span class="main__productActionDelete">Borrar</span>
+                        <span class="main__productActionDelete" data-id="${product.id}">Borrar</span>
                     </p>
                 </div>
             </section>
@@ -71,6 +73,7 @@ export { getProductsLocalToCart }
 const getBtnsCard = () => {
     const plusButtons = document.querySelectorAll(".main__btnPlus");
     const minusButtons = document.querySelectorAll(".main__btnMinus");
+    const btnDelete = document.querySelectorAll(".main__productActionDelete");
 
     plusButtons.forEach((btn) => {
         const id = btn.getAttribute('data-id');
@@ -83,6 +86,13 @@ const getBtnsCard = () => {
         const id = btn.getAttribute('data-id');
         btn.addEventListener("click", () => {
             deleteQuantityProduct(id)
+        });
+    });
+
+    btnDelete.forEach((btn) => {
+        const id = btn.getAttribute('data-id');
+        btn.addEventListener("click", () => {
+            deteleAllCard(id)
         });
     });
 }
@@ -143,6 +153,15 @@ const deleteQuantityProduct = (id) => {
     getProductsLocalToCart()
 }
 
+const deteleAllCard = (id) => {
+    const findProduct = productsCart.findIndex(item => item.id === id)
+    productsCart.splice(findProduct, 1)
+    const productsCartString = JSON.stringify(productsCart)
+    localStorage.setItem('productsCart', productsCartString);
+    getProductsLocal()
+    getProductsLocalToCart() 
+}
+
 const printValueCard = (id) => {
     if (storedProductsCart) {
         const value = storedProductsCart.findIndex(item => item.id == id)
@@ -152,13 +171,18 @@ const printValueCard = (id) => {
     }
 }
 
-const btnChecked = () => {
+const btnsToPay = () => {
     if(!btnCheckout) return
     btnCheckout.addEventListener('click', () => {
-        console.log('click')
+        form.classList.toggle('main__formproductPurchase--active')
+    })
+
+    btnReturnHome.addEventListener('click', () => {
+        window.location.href = "../../index.html"
+        form.classList.remove('main__formproductPurchase--active')
     })
     
 }
 
-btnChecked()
+btnsToPay ()
 getProductsLocalToCart()

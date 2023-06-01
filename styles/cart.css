@@ -75,6 +75,7 @@
   text-align: center;
   font-size: 0.9rem;
   margin-bottom: 1rem;
+  max-width: 9rem;
 }
 
 .main__productPriceContainer {
@@ -140,6 +141,7 @@
   color: white;
   font-weight: 600;
   border-radius: 2rem;
+  cursor: pointer;
   padding: 0.3rem 0.6rem;
   background-color: var(--main-blue);
 }
@@ -175,11 +177,13 @@
 }
 
 .main__productActionSave {
+  cursor: pointer;
   color: var(--main-blue);
   border-bottom: 1px solid var(--main-blue);
 }
 
 .main__productActionDelete {
+  cursor: pointer;
   color: var(--red);
   border-bottom: 1px solid var(--red);
 }
@@ -233,6 +237,7 @@
 .main__formCoupon button {
   color: white;
   padding: 0.5rem;
+  cursor: pointer;
   border-radius: 0 5px 5px 0;
   border: 1px solid var(--main-blue);
   background-color: var(--main-blue);
@@ -264,6 +269,7 @@
 }
 
 .main__productPurchaseButtons button {
+  cursor: pointer;
   width: 100%;
   border: none;
   color: white;
@@ -285,6 +291,7 @@
   text-align: center;
   text-decoration: none;
   justify-content: center;
+  cursor: pointer;
   background-color: var(--main-gray);
 }
 
@@ -298,6 +305,10 @@
   padding: 1.3rem;
   flex-direction: column;
   background-color: white;
+}
+
+.main__formproductPurchase--active {
+  display: flex;
 }
 
 .main__formproductPurchase input{

@@ -49,7 +49,6 @@ const getElements = () => {
 }
 
 const deleteProduct = (id) => {
-    
     const storedProductsCartString = localStorage.getItem('productsCart');
     const storedProductsCart = JSON.parse(storedProductsCartString);
     const findProduct = storedProductsCart.findIndex(item=> item.id === id)
