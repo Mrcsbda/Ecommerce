@@ -101,14 +101,14 @@ const getBtnsCard = () => {
   plusButtons.forEach((btn) => {
     const id = btn.getAttribute('data-id');
     btn.addEventListener("click", () => {
-      addQuantityProduct(id,btn)
+      addQuantityProduct(id)
     });
   });
 
   minusButtons.forEach((btn) => {
     const id = btn.getAttribute('data-id');
     btn.addEventListener("click", () => {
-      deleteQuantityProduct(id,btn)
+      deleteQuantityProduct(id)
     });
   });
 
@@ -117,7 +117,7 @@ const getBtnsCard = () => {
   loadedFavorites(favoriteActive, favoriteInactive)
 }
 
-const addQuantityProduct = async (id,btn) => {
+const addQuantityProduct = async (id) => {
   const data = await getProducts();
   const dataFiltered = data.find(item => item.id == id)
   const card = document.querySelector(`.main__product[data-id="${id}"]`);
@@ -129,7 +129,7 @@ const addQuantityProduct = async (id,btn) => {
   }
 }
 
-const deleteQuantityProduct = async (id, btn) => {
+const deleteQuantityProduct = async (id) => {
   const card = document.querySelector(`.main__product[data-id="${id}"]`);
   const quantityElement = card.querySelector('.main__productQuantity');
   if (counter > 0) {
