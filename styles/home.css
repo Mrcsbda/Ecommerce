@@ -212,10 +212,6 @@
   background-color: var(--main-blue);
 }
 
-.--btnDisable  {
-background-color: var(--main-gray);
-}
-
 @media screen and (max-width:350px) {
 
   .main {

@@ -9,6 +9,7 @@ let filteredProduct = [];
 let favoritesId = []
 let counter = 0;
 
+
 const getProducts = async () => {
   try {
     const endpoint = "products";
@@ -50,7 +51,7 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
           </div>
           <div class="main__buttonsProductContainer">
             <button class="main__btnMinus" id="btnMinus" data-id="${product.id}">-</button>
-            <span class="main__productQuantity" id="number">${counter}</span>
+            <span class="main__productQuantity" id="number" data-id="${product.id}" >${counter}</span>
             <button class="main__btnPlus" id="btnPlus" data-id="${product.id}">+</button>
           </div>
         </div>
@@ -72,7 +73,7 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
             <p class="main__categorieProduct">${product.categoryName}</p>
             <h3 class="main__nameProduct">${product.productName}</h3>
             <div class="main__priceProduct">
-              <span class="main__price">${product.priceDiscount
+              <span class="main__price">$${product.priceDiscount
           ? (product.productPrice - product.priceDiscount).toLocaleString()
           : (product.productPrice).toLocaleString()
         }</span>
@@ -81,7 +82,7 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
           </div>
           <div class="main__buttonsProductContainer">
             <button class="main__btnMinus" id="btnMinus" data-id="${product.id}">-</button>
-            <span class="main__productQuantity" id="number">${counter}</span>
+            <span class="main__productQuantity" id="number" data-id="${product.id}>${counter}</span>
             <button class="main__btnPlus" id="btnPlus" data-id="${product.id}">+</button>
           </div>
         </div>
@@ -100,14 +101,14 @@ const getBtnsCard = () => {
   plusButtons.forEach((btn) => {
     const id = btn.getAttribute('data-id');
     btn.addEventListener("click", () => {
-      addQuantityProduct(id)
+      addQuantityProduct(id,btn)
     });
   });
 
   minusButtons.forEach((btn) => {
     const id = btn.getAttribute('data-id');
     btn.addEventListener("click", () => {
-      deleteQuantityProduct(id)
+      deleteQuantityProduct(id,btn)
     });
   });
 
@@ -116,12 +117,25 @@ const getBtnsCard = () => {
   loadedFavorites(favoriteActive, favoriteInactive)
 }
 
-const addQuantityProduct = async (id) => {
-  console.log(id)
+const addQuantityProduct = async (id,btn) => {
+  const data = await getProducts();
+  const dataFiltered = data.find(item => item.id == id)
+  const card = document.querySelector(`.main__product[data-id="${id}"]`);
+  const quantityElement = card.querySelector('.main__productQuantity');
+
+  if(counter < dataFiltered.stock){
+    counter ++
+    quantityElement.textContent = counter;
+  }
 }
 
-const deleteQuantityProduct = async (id) => {
-  console.log(id)
+const deleteQuantityProduct = async (id, btn) => {
+  const card = document.querySelector(`.main__product[data-id="${id}"]`);
+  const quantityElement = card.querySelector('.main__productQuantity');
+  if (counter > 0) {
+    counter--
+    quantityElement.textContent = counter;
+  } 
 }
 
 const cateogryProducts = async () => {
