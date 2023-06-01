@@ -5,7 +5,6 @@ const getElements = async () => {
     try {
         const response = await fetch(urlApiHistory)
         const products = await response.json()
-        console.log(products)
         historyContainer.innerHTML = ""
         products.forEach(item => {
             historyContainer.innerHTML += `
@@ -35,6 +34,7 @@ const getElements = async () => {
                 <p>${item.userName}</p>
                 <p>${item.userDirection}</p>
                 <p>${item.userPhone}</p>
+                <p>${new Date(item.Date).toLocaleDateString()}</p>
               </section>
         </article>
         `

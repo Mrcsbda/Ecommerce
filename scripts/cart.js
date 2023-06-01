@@ -1,4 +1,5 @@
 import { getProductsLocal } from './modalCart.js';
+const urlApi = "https://miniback-ecommerce-production.up.railway.app";
 const cartContainer = document.querySelector('.main__productsToPayContainer')
 const storedProductsCartString = localStorage.getItem('productsCart');
 const storedProductsCart = JSON.parse(storedProductsCartString);
@@ -8,17 +9,20 @@ const btnCheckout = document.querySelector('.checkout')
 const btnReturnHome = document.querySelector('.returnHome')
 const form = document.querySelector('.main__formproductPurchase')
 const btnCancelPurchase = document.querySelector('.main__btnCancelPurchase')
+const inputName = document.getElementById('name')
+const inputAddress = document.getElementById('address')
+const inputPhone = document.getElementById('phone')
 let productsCart = storedProductsCart ? storedProductsCart : [];
 let totalToPay = 0;
 
-//../index.html
 
-const getProductsLocalToCart = () => {
+const getProductsLocalToCart = async () => {
     totalToPay = 0;
     const storedProductsCartString = localStorage.getItem('productsCart');
     const storedProductsCart = JSON.parse(storedProductsCartString);
     if (!cartContainer) return
     cartContainer.innerHTML = "";
+    if(!storedProductsCart) return
     if (!storedProductsCart.length) {
         cartContainer.innerHTML = `
         <p class="message">No has agregado nada al carrito</p>
@@ -60,10 +64,10 @@ const getProductsLocalToCart = () => {
                 </div>
             </section>
             `
-            totalToPay += (product.quantity * (product.product.productPrice - product.product.priceDiscount));
+            totalToPay +=  (product.quantity * (product.product.productPrice - product.product.priceDiscount));
         });
         subtotal.innerHTML = `$${totalToPay.toLocaleString()}`;
-        total.innerHTML = `$${(totalToPay + 8950).toLocaleString()}`;
+        total.innerHTML = `$${totalToPay.toLocaleString()}`;
     }
 
     getBtnsCard()
@@ -160,7 +164,7 @@ const deteleAllCard = (id) => {
     const productsCartString = JSON.stringify(productsCart)
     localStorage.setItem('productsCart', productsCartString);
     getProductsLocal()
-    getProductsLocalToCart() 
+    getProductsLocalToCart()
 }
 
 const printValueCard = (id) => {
@@ -173,7 +177,7 @@ const printValueCard = (id) => {
 }
 
 const btnsToPay = () => {
-    if(!btnCheckout) return
+    if (!btnCheckout) return
     btnCheckout.addEventListener('click', () => {
         form.classList.toggle('main__formproductPurchase--active')
     })
@@ -182,11 +186,68 @@ const btnsToPay = () => {
         window.location.href = "../../index.html"
         form.classList.remove('main__formproductPurchase--active')
     })
-    
+
     btnCancelPurchase.addEventListener('click', () => {
         form.classList.remove('main__formproductPurchase--active')
     })
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        sendHistoryJSON()
+    })
 }
 
-btnsToPay ()
+const sendHistoryJSON = () => {
+    storedProductsCart.forEach(async (product) => {
+        const newPurchase = {
+            categoryName: product.product.categoryName,
+            productName: product.product.productName,
+            productImage: product.product.productImage,
+            totalPurchase: ((product.product.productPrice - product.product.priceDiscount) * product.quantity),
+            amountPurchased: product.quantity,
+            userName: inputName.value,
+            userDirection: inputAddress.value,
+            userPhone: inputPhone.value,
+            Date: new Date().getTime()
+        }
+
+        const newStock = {
+            categoryName: product.product.categoryName,
+            productName: product.product.productName,
+            productImage: product.product.productImage,
+            productPrice: 27900,
+            priceDiscount: 2700,
+            stock: product.product.stock - product.quantity,
+            isTop: true,
+        }
+
+        try {
+            const response = await fetch(`${urlApi}/products/${product.id}`,{
+                method: 'PATCH',
+                body: JSON.stringify(newStock),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+
+            const response2 = await fetch(`${urlApi}/history`,{
+                method: 'POST',
+                body: JSON.stringify(newPurchase),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+        } catch (error) {
+            console.log(error)
+    
+        }
+    })
+
+    form.reset()
+    localStorage.removeItem('productsCart')
+    getProductsLocalToCart()
+    
+}
+
+btnsToPay()
 getProductsLocalToCart()
