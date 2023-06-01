@@ -1,9 +1,20 @@
+import { getProductsLocal } from './modalCart.js';
 const cartContainer = document.querySelector('.main__productsToPayContainer')
+const storedProductsCartString = localStorage.getItem('productsCart');
+const storedProductsCart = JSON.parse(storedProductsCartString);
+const subtotal = document.querySelector('.subtotal')
+const total = document.querySelector('.main__productTotalPurchaseValue')
+const btnCheckout = document.querySelector('.checkout')
+let productsCart = storedProductsCart ? storedProductsCart : [];
+let totalToPay = 0;
+
+//../index.html
 
 const getProductsLocalToCart = () => {
+    totalToPay = 0;
     const storedProductsCartString = localStorage.getItem('productsCart');
     const storedProductsCart = JSON.parse(storedProductsCartString);
-    if(!cartContainer) return
+    if (!cartContainer) return
     cartContainer.innerHTML = "";
     if (!storedProductsCart.length) {
         cartContainer.innerHTML = `
@@ -12,7 +23,7 @@ const getProductsLocalToCart = () => {
     } else {
         storedProductsCart.forEach(product => {
             cartContainer.innerHTML += `
-            <section class="main__productToPay">
+            <section class="main__productToPay" data-id="${product.id}">
                 <div class="product__informationContainer">
                     <img src="${product.product.productImage}" alt="">
                     <p>${product.product.productName}</p>
@@ -28,14 +39,14 @@ const getProductsLocalToCart = () => {
                 <div class="main__productButtonAmountContainer">
                     <p class="main__productButtonTitle">Cantidad</p>
                     <div class="main__productButtonAmount">
-                        <button>-</button>
-                        <p>0</p>
-                        <button>+</button>
+                        <button data-id="${product.id}" class="main__btnMinus">-</button>
+                        <p data-id="${product.id}" class="main__productQuantity">${printValueCard(product.id)}</p>
+                        <button data-id="${product.id}" class="main__btnPlus">+</button>
                     </div>
                 </div>
                 <div class="main_productTotalContainer">
                     <p class="main__productTotal">Total</p>
-                    <p>$${((product.product.productPrice - product.product.priceDiscount)*product.quantity).toLocaleString()}</p>
+                    <p>$${((product.product.productPrice - product.product.priceDiscount) * product.quantity).toLocaleString()}</p>
                 </div>
                 <div class="main__productActionContainer">
                     <p class="main__productActionTitle">Acción</p>
@@ -46,10 +57,104 @@ const getProductsLocalToCart = () => {
                 </div>
             </section>
             `
+            totalToPay += (product.quantity * (product.product.productPrice - product.product.priceDiscount));
         });
+        subtotal.innerHTML = `$${totalToPay.toLocaleString()}`;
+        total.innerHTML = `$${(totalToPay + 8950).toLocaleString()}`;
+    }
+
+    getBtnsCard()
+}
+
+export { getProductsLocalToCart }
+
+const getBtnsCard = () => {
+    const plusButtons = document.querySelectorAll(".main__btnPlus");
+    const minusButtons = document.querySelectorAll(".main__btnMinus");
+
+    plusButtons.forEach((btn) => {
+        const id = btn.getAttribute('data-id');
+        btn.addEventListener("click", () => {
+            addQuantityProduct(id)
+        });
+    });
+
+    minusButtons.forEach((btn) => {
+        const id = btn.getAttribute('data-id');
+        btn.addEventListener("click", () => {
+            deleteQuantityProduct(id)
+        });
+    });
+}
+
+const addQuantityProduct = async (id) => {
+    const dataFiltered = storedProductsCart.find(item => item.id == id)
+    const card = document.querySelector(`.main__productToPay[data-id="${id}"]`);
+    const quantityElement = card.querySelector('.main__productQuantity');
+    let counter = +quantityElement.textContent;
+
+    if (counter < dataFiltered.product.stock) {
+        counter++
+        quantityElement.textContent = counter;
+        if (!productsCart.find(product => product.id === id)) {
+            productsCart.push({
+                quantity: counter,
+                id,
+                product: dataFiltered
+            })
+        } else {
+            const findProduct = productsCart.findIndex(item => item.id === id)
+            productsCart[findProduct].quantity = counter;
+        }
+    }
+
+    const productsCartString = JSON.stringify(productsCart)
+    localStorage.setItem('productsCart', productsCartString);
+    getProductsLocal()
+    getProductsLocalToCart()
+}
+
+const deleteQuantityProduct = async (id) => {
+    const card = document.querySelector(`.main__productToPay[data-id="${id}"]`);
+    const quantityElement = card.querySelector('.main__productQuantity');
+    let counter = +quantityElement.textContent;
+
+    if (counter > 0) {
+        counter--
+        quantityElement.textContent = counter;
+        if (!productsCart.find(product => product.id === id)) {
+            productsCart.push({
+                quantity: counter,
+                id,
+                product: dataFiltered
+            })
+        } else {
+            const findProduct = productsCart.findIndex(item => item.id === id)
+            productsCart[findProduct].quantity = counter;
+            if (productsCart[findProduct].quantity === 0) {
+                productsCart.splice(findProduct, 1)
+            }
+        }
+    }
+
+    const productsCartString = JSON.stringify(productsCart)
+    localStorage.setItem('productsCart', productsCartString);
+    getProductsLocal()
+    getProductsLocalToCart()
+}
+
+const printValueCard = (id) => {
+    if (storedProductsCart) {
+        const value = storedProductsCart.findIndex(item => item.id == id)
+        return value !== -1 ? storedProductsCart[value].quantity : 0
+    } else {
+        return 0
     }
 }
 
-export {getProductsLocalToCart}
+btnCheckout.addEventListener('click', () => {
+
+})
+
 
 getProductsLocalToCart()
