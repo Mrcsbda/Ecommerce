@@ -137,6 +137,8 @@ const addQuantityProduct = async (id) => {
       const findProduct = productsCart.findIndex(item=> item.id === id)
       productsCart[findProduct].quantity = counter;
     }
+
+    console.log(productsCart)
   }
 }
 
@@ -148,6 +150,22 @@ const deleteQuantityProduct = async (id) => {
   if (counter > 0) {
     counter--
     quantityElement.textContent = counter;
+    if(!productsCart.find(product=> product.id === id)) {
+      productsCart.push({
+        quantity: counter,
+        id,
+        product: dataFiltered
+      }) 
+    } else {
+      const findProduct = productsCart.findIndex(item=> item.id === id)
+      productsCart[findProduct].quantity = counter;
+      if(productsCart[findProduct].quantity === 0) {
+        productsCart.splice(findProduct,1)
+      }
+    }
+
+
+    console.log(productsCart)
   } 
 }
 
