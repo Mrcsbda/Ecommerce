@@ -2,8 +2,11 @@ const URL_API = "https://miniback-ecommerce-production.up.railway.app/";
 const containerCards = document.querySelector(".main__products");
 const titlePage = document.querySelector('.main__title');
 const categoriesNames = document.querySelectorAll(".main__categoriesName");
-let filteredProduct = [];
+let favIconActive = "";
+let favIconInactive = "";
 let areAllCateogories = true
+let filteredProduct = [];
+let favoritesId = []
 let counter = 0;
 
 const getProducts = async () => {
@@ -27,9 +30,9 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
     data.forEach((product) => {
       containerCards.innerHTML += `
         <div class="main__product" data-id="${product.id}">
-          <img class="main__iconFavorite favoriteActive" src="./images/icons/favoriteActive.svg"
+          <img class="main__iconFavorite favoriteActive" data-id="${product.id}" src="./images/icons/favoriteActive.svg"
             alt="icon favorite active" />
-          <img class="main__iconFavorite favoriteInactive" src="./images/icons/favoriteInactive.svg"
+          <img class="main__iconFavorite favoriteInactive favoriteInactive--active" data-id="${product.id}" src="./images/icons/favoriteInactive.svg"
             alt="icon favorite inactive" />
           <figure class="main__imageProductContainer">
             <img src="${product.productImage}" alt="image product" />
@@ -39,10 +42,10 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
             <h3 class="main__nameProduct">${product.productName}</h3>
             <div class="main__priceProduct">
               <span class="main__price">$${product.priceDiscount
-          ? (product.productPrice - product.priceDiscount).toLocaleString()
-          : (product.productPrice).toLocaleString()
+          ? (product.productPrice - product.priceDiscount).toLocaleString('es-ES')
+          : (product.productPrice).toLocaleString('es-ES')
         }</span>
-              <span class="main__withoutDiscount">$${(product.productPrice).toLocaleString()}</span>
+              <span class="main__withoutDiscount">$${(product.productPrice).toLocaleString('es-ES')}</span>
             </div>
           </div>
           <div class="main__buttonsProductContainer">
@@ -91,6 +94,9 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
 const getBtnsCard = () => {
   const plusButtons = document.querySelectorAll(".main__btnPlus");
   const minusButtons = document.querySelectorAll(".main__btnMinus");
+  const favoriteInactive = document.querySelectorAll('.favoriteInactive');
+  const favoriteActive = document.querySelectorAll('.favoriteActive');
+
   plusButtons.forEach((btn) => {
     const id = btn.getAttribute('data-id');
     btn.addEventListener("click", () => {
@@ -104,6 +110,10 @@ const getBtnsCard = () => {
       deleteQuantityProduct(id)
     });
   });
+
+  addFavorites(favoriteInactive, favoriteActive)
+  deleteFavorites(favoriteActive, favoriteInactive)
+  loadedFavorites(favoriteActive, favoriteInactive)
 }
 
 const addQuantityProduct = async (id) => {
@@ -167,5 +177,63 @@ const cateogryProducts = async () => {
   });
 }
 
-cateogryProducts()
+const addFavorites = (IconsInactive, iconsActive) => {
+  IconsInactive.forEach((iconInactive) => {
+    const id = iconInactive.getAttribute('data-id');
+    iconInactive.addEventListener("click", () => {
+      let favoritesIdString = localStorage.getItem('Favorites');
+      favoritesId = favoritesIdString === null?[]:favoritesIdString.split(',').filter(Boolean)
+      console.log(favoritesId)
+      favoritesId.push(id)
+      localStorage.setItem('Favorites', favoritesId)
+      const idExist = favoritesId.find((item) => item === id);
+      idExist === id?iconInactive.classList.remove('favoriteInactive--active'):iconInactive.classList.add('favoriteInactive--active')
+      iconsActive.forEach((iconActive) => {
+        const id = iconActive.getAttribute('data-id');
+        const idExist = favoritesId.find((item) => item === id);
+        idExist === id?iconActive.classList.add('favoriteActive--active'):iconActive.classList.remove('favoriteActive--active')
+      });
+    });
+  });
+}
+
+const deleteFavorites = (iconsActive, iconsInactive) => {
+  iconsActive.forEach((iconActive) => {
+    const id = iconActive.getAttribute('data-id');
+    iconActive.addEventListener("click", () => {
+      let favoritesIdString = localStorage.getItem('Favorites');
+      favoritesId = favoritesIdString === null?[]:favoritesIdString.split(',')
+      const findItem = favoritesId.findIndex((item)=> item === id);
+      favoritesId.splice(findItem,1)
+      localStorage.setItem('Favorites', favoritesId)
+      const idExist = favoritesId.find((item) => item === id);
+      !idExist?iconActive.classList.remove('favoriteActive--active'):iconActive.classList.add('favoriteActive--active')
+      iconsInactive.forEach((iconInactive) => {
+        const id = iconInactive.getAttribute('data-id');
+        const idExist = favoritesId.find((item) => item === id);
+        !idExist?iconInactive.classList.add('favoriteInactive--active'):iconInactive.classList.remove('favoriteInactive--active')
+      });
+    });
+  });
+}
+
+const loadedFavorites = (iconsActive, iconsInactive) => {
+  let favoritesIdString = localStorage.getItem('Favorites');
+  favoritesId = favoritesIdString === null?[]:favoritesIdString.split(',').filter(Boolean)
+  iconsActive.forEach((iconActive) => {
+    const id = iconActive.getAttribute('data-id');
+    const idExist = favoritesId.find(item => item === id)
+    idExist === id?iconActive.classList.add('favoriteActive--active'):iconActive.classList.remove('favoriteActive--active')
+  });
+  iconsInactive.forEach((iconInactive) => {
+    const id = iconInactive.getAttribute('data-id');
+    const idExist = favoritesId.find(item => item === id)
+    !idExist?iconInactive.classList.add('favoriteInactive--active'):iconInactive.classList.remove('favoriteInactive--active')
+  });
+}
+
 printCards()
+cateogryProducts()
+
+
+

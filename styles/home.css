@@ -140,6 +140,11 @@
   position: absolute;
 }
 
+.favoriteActive--active, .favoriteInactive--active {
+  display: inline;
+  cursor: pointer;
+}
+
 .main__imageProductContainer img {
   width: 100%;
   height: 12rem;
