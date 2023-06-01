@@ -7,7 +7,7 @@ let favIconInactive = "";
 let areAllCateogories = true
 let filteredProduct = [];
 let favoritesId = []
-let counter = 0;
+let productsCart = [];
 
 
 const getProducts = async () => {
@@ -51,7 +51,7 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
           </div>
           <div class="main__buttonsProductContainer">
             <button class="main__btnMinus" id="btnMinus" data-id="${product.id}">-</button>
-            <span class="main__productQuantity" id="number" data-id="${product.id}" >${counter}</span>
+            <span class="main__productQuantity" id="number" data-id="${product.id}" >${0}</span>
             <button class="main__btnPlus" id="btnPlus" data-id="${product.id}">+</button>
           </div>
         </div>
@@ -82,7 +82,7 @@ const printCards = async (productsFiltered = null, titlePageFiltered = 'Producto
           </div>
           <div class="main__buttonsProductContainer">
             <button class="main__btnMinus" id="btnMinus" data-id="${product.id}">-</button>
-            <span class="main__productQuantity" id="number" data-id="${product.id}>${counter}</span>
+            <span class="main__productQuantity" id="number" data-id="${product.id}">${0}</span>
             <button class="main__btnPlus" id="btnPlus" data-id="${product.id}">+</button>
           </div>
         </div>
@@ -122,16 +122,29 @@ const addQuantityProduct = async (id) => {
   const dataFiltered = data.find(item => item.id == id)
   const card = document.querySelector(`.main__product[data-id="${id}"]`);
   const quantityElement = card.querySelector('.main__productQuantity');
+  let counter = +quantityElement.textContent;
 
   if(counter < dataFiltered.stock){
     counter ++
     quantityElement.textContent = counter;
+    if(!productsCart.find(product=> product.id === id)) {
+      productsCart.push({
+        quantity: counter,
+        id,
+        product: dataFiltered
+      }) 
+    } else {
+      const findProduct = productsCart.findIndex(item=> item.id === id)
+      productsCart[findProduct].quantity = counter;
+    }
   }
 }
 
 const deleteQuantityProduct = async (id) => {
   const card = document.querySelector(`.main__product[data-id="${id}"]`);
   const quantityElement = card.querySelector('.main__productQuantity');
+  let counter = +quantityElement.textContent;
+
   if (counter > 0) {
     counter--
     quantityElement.textContent = counter;
