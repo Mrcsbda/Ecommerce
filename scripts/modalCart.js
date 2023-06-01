@@ -20,11 +20,11 @@ const getProductsLocal = () => {
                 <img class="header__imageProduct" src="${product.product.productImage}" alt="">
                 <div>
                     <p class="header__nameProduct">${product.product.productName}</p>
-                    <p class="header__amountProduct"><span>${product.quantity} x </span>$${(product.product.productPrice).toLocaleString()}</p>
+                    <p class="header__amountProduct"><span>${product.quantity} x </span>$${(product.product.productPrice - product.product.priceDiscount).toLocaleString()}</p>
                 </div>
             </div>
             `
-            totalToPay += (product.quantity * product.product.productPrice);
+            totalToPay += (product.quantity * (product.product.productPrice - product.product.priceDiscount));
             totalCart.innerHTML = `$${totalToPay !== 0?totalToPay.toLocaleString():0}`;
         });
     }

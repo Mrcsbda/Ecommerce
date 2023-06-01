@@ -216,7 +216,13 @@
   border-radius: 0.5rem;
   padding: 1rem 1.2rem;
   background-color: white;
+
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+#productsCartContainer {
+  max-height: 55vh;
+  overflow-y: auto;
 }
 
 .message {
@@ -237,6 +243,7 @@
   display: flex;
   position: relative;
   align-items: center;
+  
 }
 
 .header__deleteProductIcon {
