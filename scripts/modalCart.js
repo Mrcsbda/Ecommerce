@@ -8,6 +8,7 @@ let totalToPay = 0;
 const getProductsLocal = () => {
     const storedProductsCartString = localStorage.getItem('productsCart');
     const storedProductsCart = JSON.parse(storedProductsCartString);
+    totalToPay = 0;
     cartContainer.innerHTML = "";
     totalCart.innerHTML = 0;
     cartCounter.classList.remove('header__cartCounter--active')
