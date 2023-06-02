@@ -3,12 +3,12 @@ const cartContainer = document.getElementById('productsCartContainer')
 const totalCart = document.querySelector('.header__totalToPay');
 const cartCounter = document.querySelector('.header__cartCounter'); 
 
-let totalToPay = 0;
+let totalToPayC = 0;
 
 const getProductsLocal = () => {
     const storedProductsCartString = localStorage.getItem('productsCart');
     const storedProductsCart = JSON.parse(storedProductsCartString);
-    totalToPay = 0;
+    totalToPayC = 0;
     cartContainer.innerHTML = "";
     totalCart.innerHTML = 0;
     cartCounter.classList.remove('header__cartCounter--active')
@@ -28,8 +28,8 @@ const getProductsLocal = () => {
                 </div>
             </div>
             `
-            totalToPay += (product.quantity * (product.product.productPrice - product.product.priceDiscount));
-            totalCart.innerHTML = `$${totalToPay !== 0?totalToPay.toLocaleString():0}`;
+            totalToPayC += (product.quantity * (product.product.productPrice - product.product.priceDiscount));
+            totalCart.innerHTML = `$${totalToPayC !== 0?totalToPayC.toLocaleString():0}`;
             cartCounter.classList.add('header__cartCounter--active')
         });
         cartCounter.innerHTML = storedProductsCart.length;
