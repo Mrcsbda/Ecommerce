@@ -65,10 +65,14 @@ const getProductsLocalToCart = async () => {
             `
             totalToPay +=  (product.quantity * (product.product.productPrice - product.product.priceDiscount));
         });
-        subtotal.innerHTML = `$${totalToPay.toLocaleString()}`;
+        subtotal.innerHTML =`$${totalToPay.toLocaleString()}`;
         total.innerHTML = `$${totalToPay.toLocaleString()}`;
     }
 
+    if(!storedProductsCart.length) {
+        subtotal.innerHTML = `$${0}`;
+        total.innerHTML = `$${0}`;
+    }
     getBtnsCard()
 }
 
