@@ -1,4 +1,4 @@
-const urlApiProducts = "https://miniback-ecommerce-production.up.railway.app/products";
+const urlApiProducts = "https://ecommerce-miniback.onrender.com/products";
 const productsContainer = document.querySelector('.main__products');
 
 // ./modifyProduct.html

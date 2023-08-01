@@ -1,5 +1,5 @@
 import {getProductsLocal} from './modalCart.js';
-const URL_API = "https://miniback-ecommerce-production.up.railway.app/";
+const URL_API = "https://ecommerce-miniback.onrender.com/";
 const containerCards = document.querySelector(".main__products");
 const titlePage = document.querySelector('.main__title');
 const categoriesNames = document.querySelectorAll(".main__categoriesName");
@@ -133,7 +133,7 @@ const addQuantityProduct = async (id) => {
         quantity: counter,
         id,
         product: dataFiltered
-      }) 
+      })
     } else {
       const findProduct = productsCart.findIndex(item=> item.id === id)
       productsCart[findProduct].quantity = counter;
@@ -158,7 +158,7 @@ const deleteQuantityProduct = async (id) => {
         quantity: counter,
         id,
         product: dataFiltered
-      }) 
+      })
     } else {
       const findProduct = productsCart.findIndex(item=> item.id === id)
       productsCart[findProduct].quantity = counter;
@@ -166,7 +166,7 @@ const deleteQuantityProduct = async (id) => {
         productsCart.splice(findProduct,1)
       }
     }
-  } 
+  }
 
   const productsCartString = JSON.stringify(productsCart)
   localStorage.setItem('productsCart', productsCartString);
@@ -282,7 +282,7 @@ const loadedFavorites = (iconsActive, iconsInactive) => {
 
 const printValueCard = (id) => {
   if(storedProductsCart){
-    const value = storedProductsCart.findIndex(item=> item.id == id) 
+    const value = storedProductsCart.findIndex(item=> item.id == id)
     return value !== -1?storedProductsCart[value].quantity:0
   } else {
     return 0
@@ -291,6 +291,3 @@ const printValueCard = (id) => {
 
 printCards()
 cateogryProducts()
-
-
-

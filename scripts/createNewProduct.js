@@ -1,4 +1,4 @@
-const urlApiProducts = "https://miniback-ecommerce-production.up.railway.app/products";
+const urlApiProducts = "https://ecommerce-miniback.onrender.com/products";
 const inputsForm = document.querySelectorAll('.form__input')
 const form = document.getElementById('createProduct')
 const validationForm = document.querySelector('.incorrect')
