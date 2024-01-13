@@ -1,4 +1,4 @@
-const urlApiProducts = "https://ecommerce-miniback.onrender.com/products";
+const urlApiProducts = "https://miniback-ecommerce-dev-xtxr.2.us-1.fl0.io/products";
 const productsContainer = document.querySelector('.main__products');
 
 // ./modifyProduct.html

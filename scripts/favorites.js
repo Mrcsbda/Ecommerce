@@ -1,5 +1,5 @@
 import { getProductsLocal } from './modalCart.js';
-const URL_API = "https://ecommerce-miniback.onrender.com/";
+const URL_API = "https://miniback-ecommerce-dev-xtxr.2.us-1.fl0.io/";
 const favoritesContainer = document.querySelector('.main__products')
 const title = document.querySelector('.main__noFavorites')
 const storedProductsCartString = localStorage.getItem('productsCart');
