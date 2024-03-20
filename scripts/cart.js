@@ -1,5 +1,5 @@
 import { getProductsLocal } from './modalCart.js';
-const urlApi = "https://miniback-ecommerce-dev-xtxr.2.us-1.fl0.io/";
+const urlApi = "https://ecommerce-miniback.onrender.com/";
 const cartContainer = document.querySelector('.main__productsToPayContainer')
 const storedProductsCartString = localStorage.getItem('productsCart');
 const storedProductsCart = JSON.parse(storedProductsCartString);

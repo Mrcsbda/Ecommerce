@@ -1,4 +1,4 @@
-const urlApiHistory = "https://miniback-ecommerce-dev-xtxr.2.us-1.fl0.io/history";
+const urlApiHistory = "https://ecommerce-miniback.onrender.com/history";
 const historyContainer = document.querySelector('.main')
 
 const getElements = async () => {

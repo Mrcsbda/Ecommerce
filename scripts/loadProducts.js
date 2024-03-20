@@ -1,5 +1,5 @@
 import {getProductsLocal} from './modalCart.js';
-const URL_API = "https://miniback-ecommerce-dev-xtxr.2.us-1.fl0.io/";
+const URL_API = "https://ecommerce-miniback.onrender.com/";
 const containerCards = document.querySelector(".main__products");
 const titlePage = document.querySelector('.main__title');
 const categoriesNames = document.querySelectorAll(".main__categoriesName");

@@ -1,4 +1,4 @@
-const urlApiProducts = "https://miniback-ecommerce-dev-xtxr.2.us-1.fl0.io/products";
+const urlApiProducts = "https://ecommerce-miniback.onrender.com/products";
 const inputsForm = document.querySelectorAll('.form__input')
 const form = document.getElementById('createProduct')
 const validationForm = document.querySelector('.incorrect')
